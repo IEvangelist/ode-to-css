@@ -48,18 +48,24 @@ test.describe('ode-to-css storytelling site', () => {
     await expect(page).toHaveTitle(/Ode to CSS/);
     await expect(page.getByRole('heading', { name: /cascade becomes a current/i })).toBeVisible();
     await expect(page.getByRole('link', { name: /Begin the voyage/i })).toBeVisible();
+    await expect(page.getByRole('heading', { name: /Readable rules can carry enormous feeling/i })).toBeVisible();
+    await expect(page.getByRole('heading', { name: /The ocean becomes a style sheet/i })).toBeVisible();
+    await expect(page.getByRole('heading', { name: /A language grows by remaining useful/i })).toBeVisible();
+    await expect(page.getByText(/No runtime JavaScript/i)).toBeVisible();
 
     await expectWcagAaaClean(page);
 
     const landmarks = await page.evaluate(() => ({
       main: document.querySelectorAll('main').length,
       nav: document.querySelectorAll('nav[aria-label]').length,
+      visualFrames: document.querySelectorAll('.image-strip .frame').length,
+      timelineItems: document.querySelectorAll('.timeline article').length,
       h1: document.querySelectorAll('h1').length,
       unlabeledLinks: [...document.querySelectorAll('a')].filter((link) => !link.textContent.trim() && !link.getAttribute('aria-label')).length,
       skipTarget: Boolean(document.querySelector(document.querySelector('.skip-link')?.getAttribute('href') || ''))
     }));
 
-    expect(landmarks).toEqual({ main: 1, nav: 1, h1: 1, unlabeledLinks: 0, skipTarget: true });
+    expect(landmarks).toEqual({ main: 1, nav: 1, visualFrames: 5, timelineItems: 4, h1: 1, unlabeledLinks: 0, skipTarget: true });
 
     const viewportHeights = [720, 820, 920, 1020];
     for (let iteration = 0; iteration < 100; iteration += 1) {
@@ -81,6 +87,7 @@ test.describe('ode-to-css storytelling site', () => {
       await page.goto(entryPath);
       await expect(page.getByRole('heading', { name: /cascade becomes a current/i })).toBeVisible();
       await expect(page.getByRole('navigation', { name: /primary navigation/i })).toBeVisible();
+      await expect(page.getByLabel(/Immersive CSS image animation sequence/i)).toBeVisible();
       await expectResponsiveUx(page);
       await expectWcagAaaClean(page);
     });
