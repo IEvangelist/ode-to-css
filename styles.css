@@ -354,16 +354,16 @@ h3 {
 
 .wave {
   z-index: 3;
-  inset-inline: -10%;
+  inset-inline: 0;
   height: 1.1rem;
   border-radius: 50%;
   opacity: .82;
   background: repeating-linear-gradient(90deg, transparent 0 2rem, rgb(255 255 255 / .78) 2rem 5rem, transparent 5rem 7rem);
 }
 
-.wave-one { inset-block-end: 33%; animation: drift 8s linear infinite; }
-.wave-two { inset-block-end: 23%; animation: drift 12s linear reverse infinite; }
-.wave-three { inset-block-end: 17%; opacity: .46; animation: drift 16s linear infinite; }
+.wave-one { inset-block-end: 33%; animation: waveDrift 8s linear infinite; }
+.wave-two { inset-block-end: 23%; animation: waveDrift 12s linear reverse infinite; }
+.wave-three { inset-block-end: 17%; opacity: .46; animation: waveDrift 16s linear infinite; }
 
 .sequence figcaption {
   position: absolute;
@@ -692,6 +692,10 @@ h3 {
 
 @keyframes drift {
   to { transform: translateX(12%) rotate(3deg); }
+}
+
+@keyframes waveDrift {
+  to { background-position: 7rem 0; }
 }
 
 @keyframes twinkle {
