@@ -9,6 +9,7 @@ const responsiveViewports = [
   { name: 'wide desktop', width: 1440, height: 1024 }
 ];
 const entryPath = './';
+const kontikiPath = './kontiki2.html';
 
 async function expectWcagAaaClean(page) {
   const results = await new AxeBuilder({ page })
@@ -46,9 +47,10 @@ test.describe('ode-to-css storytelling site', () => {
   test('loads core story, passes WCAG AAA-oriented checks, and survives a 100-step Ralph loop', async ({ page }) => {
     await page.goto(entryPath);
     await expect(page).toHaveTitle(/Ode to CSS/);
-    await expect(page.getByRole('heading', { name: /cascade becomes a current/i })).toBeVisible();
-    await expect(page.getByRole('link', { name: /Begin the voyage/i })).toBeVisible();
-    await expect(page.getByRole('heading', { name: /Readable rules can carry enormous feeling/i })).toBeVisible();
+    await expect(page.getByRole('heading', { name: /saltwater in its veins/i })).toBeVisible();
+    await expect(page.getByRole('link', { name: /Sail the Kon-Tiki2 story/i })).toBeVisible();
+    await expect(page.getByRole('heading', { name: /Kon-Tiki2 deserves/i })).toBeVisible();
+    await expect(page.getByRole('heading', { name: /Readable rules can carry a true expedition/i })).toBeVisible();
     await expect(page.getByRole('heading', { name: /The ocean becomes a style sheet/i })).toBeVisible();
     await expect(page.getByRole('heading', { name: /A language grows by remaining useful/i })).toBeVisible();
     await expect(page.getByText(/No runtime JavaScript/i)).toBeVisible();
@@ -60,12 +62,13 @@ test.describe('ode-to-css storytelling site', () => {
       nav: document.querySelectorAll('nav[aria-label]').length,
       visualFrames: document.querySelectorAll('.image-strip .frame').length,
       timelineItems: document.querySelectorAll('.timeline article').length,
+      featuredLinks: document.querySelectorAll('a[href="kontiki2.html"]').length,
       h1: document.querySelectorAll('h1').length,
       unlabeledLinks: [...document.querySelectorAll('a')].filter((link) => !link.textContent.trim() && !link.getAttribute('aria-label')).length,
       skipTarget: Boolean(document.querySelector(document.querySelector('.skip-link')?.getAttribute('href') || ''))
     }));
 
-    expect(landmarks).toEqual({ main: 1, nav: 1, visualFrames: 5, timelineItems: 4, h1: 1, unlabeledLinks: 0, skipTarget: true });
+    expect(landmarks).toEqual({ main: 1, nav: 1, visualFrames: 5, timelineItems: 4, featuredLinks: 3, h1: 1, unlabeledLinks: 0, skipTarget: true });
 
     const viewportHeights = [720, 820, 920, 1020];
     for (let iteration = 0; iteration < 100; iteration += 1) {
@@ -81,13 +84,44 @@ test.describe('ode-to-css storytelling site', () => {
     await page.screenshot({ path: 'test-results/ode-to-css-ralph-loop.png', fullPage: true });
   });
 
+  test('loads the Kon-Tiki2 story subpage with attribution, excerpts, and CSS-first structure', async ({ page }) => {
+    await page.goto(kontikiPath);
+    await expect(page).toHaveTitle(/Kon-Tiki2 CSS Voyage/);
+    await expect(page.getByRole('heading', { name: /Forty-three days/i })).toBeVisible();
+    await expect(page.getByRole('heading', { name: /respectful remix/i })).toBeVisible();
+    await expect(page.getByRole('link', { name: /Read Håkon's original/i })).toBeVisible();
+    await expect(page.getByRole('link', { name: /Visit the original Kon-Tiki2 page/i })).toBeVisible();
+    await expect(page.getByText(/responsible for all electrons onboard/i)).toBeVisible();
+    await expect(page.locator('blockquote').filter({ hasText: /honorable way of arriving/i })).toBeVisible();
+
+    await expectWcagAaaClean(page);
+
+    const story = await page.evaluate(() => ({
+      main: document.querySelectorAll('main').length,
+      chapters: document.querySelectorAll('.voyage-chapter').length,
+      stats: document.querySelectorAll('.voyage-stats article').length,
+      photoLinks: document.querySelectorAll('.photo-card').length,
+      canonicalLinks: [...document.querySelectorAll('a[href="https://www.wiumlie.no/img/2015/kontiki2.html"]')].length,
+      unlabeledImages: [...document.querySelectorAll('img')].filter((image) => !image.getAttribute('alt')).length,
+      skipTarget: Boolean(document.querySelector(document.querySelector('.skip-link')?.getAttribute('href') || ''))
+    }));
+
+    expect(story).toEqual({ main: 1, chapters: 8, stats: 3, photoLinks: 16, canonicalLinks: 4, unlabeledImages: 0, skipTarget: true });
+  });
+
   for (const viewport of responsiveViewports) {
     test(`responsive UX and WCAG AAA-oriented validation at ${viewport.name}`, async ({ page }) => {
       await page.setViewportSize({ width: viewport.width, height: viewport.height });
       await page.goto(entryPath);
-      await expect(page.getByRole('heading', { name: /cascade becomes a current/i })).toBeVisible();
+      await expect(page.getByRole('heading', { name: /saltwater in its veins/i })).toBeVisible();
       await expect(page.getByRole('navigation', { name: /primary navigation/i })).toBeVisible();
       await expect(page.getByLabel(/Immersive CSS image animation sequence/i)).toBeVisible();
+      await expectResponsiveUx(page);
+      await expectWcagAaaClean(page);
+
+      await page.goto(kontikiPath);
+      await expect(page.getByRole('heading', { name: /Forty-three days/i })).toBeVisible();
+      await expect(page.getByRole('navigation', { name: /primary navigation/i })).toBeVisible();
       await expectResponsiveUx(page);
       await expectWcagAaaClean(page);
     });

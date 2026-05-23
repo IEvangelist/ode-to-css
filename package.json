@@ -3,8 +3,8 @@
   "version": "1.0.0",
   "description": "A storytelling ode to Håkon Wium Lie and the enduring craft of CSS.",
   "scripts": {
-    "build": "rm -rf dist && mkdir -p dist && cp index.html styles.css dist/",
-    "preview": "python3 -m http.server 4173 -d .",
+    "build": "node scripts/build.cjs",
+    "preview": "node scripts/preview.cjs",
     "test": "playwright test",
     "test:ui": "playwright test --ui",
     "playwright:install": "playwright install --with-deps chromium",

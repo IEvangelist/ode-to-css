@@ -681,6 +681,374 @@ h3 {
   color: var(--aqua);
 }
 
+.story-callout,
+.source-banner,
+.voyage-stats,
+.voyage-chapters {
+  width: min(112rem, calc(100% - 2rem));
+  margin-inline: auto;
+}
+
+.story-callout,
+.source-banner {
+  display: grid;
+  grid-template-columns: minmax(0, .9fr) minmax(18rem, 1fr) auto;
+  gap: clamp(1.5rem, 4vw, 4rem);
+  align-items: center;
+  padding: clamp(1.5rem, 4vw, 3rem);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background:
+    radial-gradient(circle at 90% 10%, rgb(255 214 107 / .18), transparent 14rem),
+    linear-gradient(135deg, rgb(124 244 237 / .11), rgb(255 255 255 / .04));
+  box-shadow: var(--shadow);
+}
+
+.story-callout {
+  margin-block: clamp(3rem, 8vw, 7rem) 0;
+}
+
+.story-callout h2,
+.source-banner h2 {
+  max-width: 15ch;
+  font-size: clamp(2.6rem, 6vw, 6rem);
+}
+
+.story-callout p,
+.source-banner p {
+  color: var(--muted);
+  font-size: clamp(1rem, 1.5vw, 1.2rem);
+}
+
+.voyage-page {
+  background:
+    radial-gradient(circle at 15% 5%, rgb(255 214 107 / .18), transparent 24rem),
+    radial-gradient(circle at 88% 12%, rgb(124 244 237 / .2), transparent 28rem),
+    linear-gradient(180deg, #07111f, #10243b 38%, #06101d 100%);
+}
+
+.voyage-hero {
+  position: relative;
+  min-height: 100svh;
+  overflow: clip;
+}
+
+.voyage-hero::before {
+  position: absolute;
+  inset: 18% -10% auto;
+  height: 32rem;
+  content: "";
+  opacity: .3;
+  background:
+    repeating-linear-gradient(100deg, transparent 0 4rem, rgb(124 244 237 / .22) 4rem 4.14rem, transparent 4.14rem 8rem),
+    radial-gradient(ellipse at 50% 100%, rgb(124 244 237 / .36), transparent 62%);
+  transform: rotate(-8deg);
+}
+
+.voyage-hero-grid {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(0, .85fr) minmax(20rem, 1fr);
+  gap: clamp(2rem, 5vw, 6rem);
+  align-items: center;
+  width: min(112rem, calc(100% - 2rem));
+  min-height: calc(100svh - 6rem);
+  margin-inline: auto;
+  padding-block: 4rem 7rem;
+}
+
+.voyage-copy {
+  min-width: 0;
+}
+
+.voyage-copy h1 {
+  max-width: 12ch;
+  font-size: clamp(4rem, 11vw, 10rem);
+}
+
+.voyage-map {
+  position: relative;
+  min-height: clamp(30rem, 56vw, 50rem);
+  margin: 0;
+  isolation: isolate;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  overflow: hidden;
+  background:
+    radial-gradient(circle at 16% 76%, rgb(157 230 168 / .85) 0 2.4rem, transparent 2.5rem),
+    radial-gradient(circle at 84% 24%, rgb(157 230 168 / .75) 0 2.8rem, transparent 2.9rem),
+    radial-gradient(circle at 65% 58%, rgb(255 214 107 / .34), transparent 12rem),
+    repeating-linear-gradient(32deg, rgb(255 255 255 / .06) 0 .08rem, transparent .08rem 3rem),
+    linear-gradient(145deg, #1f3868, #0d5874 45%, #07111f);
+  box-shadow: var(--shadow);
+}
+
+.voyage-map::before,
+.voyage-map::after {
+  position: absolute;
+  inset-inline: -20%;
+  content: "";
+  border-radius: 50%;
+}
+
+.voyage-map::before {
+  inset-block-end: -6%;
+  height: 36%;
+  background: linear-gradient(90deg, transparent, rgb(255 255 255 / .2), transparent);
+  animation: drift 12s linear infinite;
+}
+
+.voyage-map::after {
+  inset-block-start: 12%;
+  height: 2px;
+  opacity: .5;
+  background: repeating-linear-gradient(90deg, transparent 0 2rem, var(--sun) 2rem 2.3rem);
+  transform: rotate(-18deg);
+}
+
+.route-line,
+.map-label,
+.voyage-raft {
+  position: absolute;
+}
+
+.route-line {
+  inset-inline: 18% 17%;
+  height: .2rem;
+  border-radius: 999px;
+  background: linear-gradient(90deg, transparent, var(--sun), var(--aqua), transparent);
+  box-shadow: 0 0 1.5rem rgb(124 244 237 / .45);
+  transform-origin: left center;
+  animation: chart 8s ease-in-out infinite;
+}
+
+.route-line-one { inset-block-start: 38%; transform: rotate(-12deg); }
+.route-line-two { inset-block-start: 50%; transform: rotate(-2deg); animation-delay: -2s; }
+.route-line-three { inset-block-start: 62%; transform: rotate(10deg); animation-delay: -4s; }
+
+.map-label {
+  z-index: 2;
+  padding: .55rem .75rem;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  color: var(--night);
+  background: var(--sun);
+  font-size: .8rem;
+  font-weight: 950;
+  text-transform: uppercase;
+}
+
+.map-label.peru { inset: auto auto 16% 8%; }
+.map-label.rapa-nui { inset: 16% 8% auto auto; }
+
+.voyage-raft {
+  z-index: 3;
+  inset: 49% auto auto 47%;
+  width: 9rem;
+  height: 3rem;
+  background:
+    linear-gradient(90deg, transparent 0 10%, #6b3e26 10% 24%, transparent 24% 32%, #8f5837 32% 48%, transparent 48% 56%, #6b3e26 56% 72%, transparent 72%),
+    linear-gradient(#ba7b4a, #5d321f);
+  clip-path: polygon(0 44%, 100% 25%, 88% 82%, 12% 88%);
+  filter: drop-shadow(0 .8rem 1rem rgb(0 0 0 / .5));
+  animation: mapSail 10s ease-in-out infinite;
+}
+
+.voyage-raft::before {
+  position: absolute;
+  inset: auto auto 54% 48%;
+  width: .25rem;
+  height: 6rem;
+  content: "";
+  background: #3d271e;
+}
+
+.voyage-raft::after {
+  position: absolute;
+  inset: auto auto 94% 50%;
+  width: 4.5rem;
+  height: 5rem;
+  content: "";
+  background: linear-gradient(135deg, var(--ink), #d7f7f7);
+  clip-path: polygon(0 0, 100% 50%, 0 100%);
+}
+
+.voyage-map figcaption {
+  position: absolute;
+  inset: auto 1rem 1rem;
+  z-index: 4;
+  padding: .85rem 1rem;
+  border: 1px solid var(--line);
+  border-radius: 1rem;
+  color: var(--muted);
+  background: rgb(7 17 31 / .82);
+  backdrop-filter: blur(.8rem);
+}
+
+.source-banner {
+  margin-block: clamp(4rem, 8vw, 7rem);
+}
+
+.voyage-stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+  margin-block-end: clamp(3rem, 8vw, 7rem);
+}
+
+.voyage-stats article {
+  min-height: 12rem;
+  padding: clamp(1.25rem, 3vw, 2rem);
+  border: 1px solid var(--line);
+  border-radius: calc(var(--radius) * .75);
+  background:
+    radial-gradient(circle at 85% 18%, rgb(124 244 237 / .18), transparent 9rem),
+    var(--panel);
+  box-shadow: 0 1.2rem 3rem rgb(0 0 0 / .18);
+}
+
+.voyage-stats strong {
+  display: block;
+  color: var(--sun);
+  font-size: clamp(3rem, 8vw, 6.5rem);
+  line-height: .9;
+}
+
+.voyage-stats span {
+  display: block;
+  max-width: 16rem;
+  margin-block-start: 1rem;
+  color: var(--muted);
+  font-weight: 800;
+}
+
+.voyage-chapters {
+  display: grid;
+  gap: clamp(2rem, 8vw, 6rem);
+  padding-block-end: clamp(5rem, 10vw, 9rem);
+}
+
+.voyage-chapter {
+  display: grid;
+  grid-template-columns: 8rem minmax(0, 1fr);
+  gap: clamp(1rem, 4vw, 4rem);
+  align-items: start;
+  view-timeline-name: --voyage-chapter;
+}
+
+.chapter-pin {
+  position: sticky;
+  inset-block-start: 1rem;
+  color: transparent;
+  font-size: clamp(3rem, 8vw, 7rem);
+  font-weight: 950;
+  line-height: .8;
+  -webkit-text-stroke: 1px rgb(255 255 255 / .4);
+}
+
+.voyage-panel {
+  display: grid;
+  grid-template-columns: minmax(0, .9fr) minmax(18rem, .75fr);
+  gap: clamp(1.5rem, 4vw, 4rem);
+  align-items: center;
+  min-height: 72vh;
+  padding: clamp(1.4rem, 4vw, 4rem);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background:
+    radial-gradient(circle at 75% 14%, rgb(255 214 107 / .14), transparent 14rem),
+    linear-gradient(135deg, var(--panel-strong), rgb(255 255 255 / .035));
+  box-shadow: var(--shadow);
+  animation: reveal both linear;
+  animation-timeline: --voyage-chapter;
+  animation-range: entry 10% cover 35%;
+}
+
+.voyage-panel h2 {
+  max-width: 13ch;
+}
+
+.voyage-panel p {
+  color: var(--muted);
+  font-size: clamp(1rem, 1.6vw, 1.22rem);
+}
+
+blockquote {
+  grid-column: 1;
+  margin: 2rem 0 0;
+  padding-inline-start: 1.25rem;
+  border-inline-start: .28rem solid var(--sun);
+  color: var(--ink);
+  font-size: clamp(1.25rem, 2.6vw, 2.1rem);
+  font-weight: 850;
+  line-height: 1.18;
+  text-wrap: balance;
+}
+
+.photo-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: .8rem;
+}
+
+.photo-card {
+  position: relative;
+  display: grid;
+  min-height: 13rem;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  border-radius: 1.25rem;
+  color: var(--ink);
+  background:
+    radial-gradient(circle at 35% 25%, rgb(255 214 107 / .34), transparent 6rem),
+    linear-gradient(145deg, #173057, #07111f);
+  text-decoration: none;
+  box-shadow: 0 1rem 2rem rgb(0 0 0 / .22);
+}
+
+.photo-card.tall {
+  grid-row: span 2;
+  min-height: 27rem;
+}
+
+.photo-card img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transform: scale(1.06);
+  transition: transform .7s ease, filter .7s ease;
+}
+
+.photo-card::after {
+  position: absolute;
+  inset: 0;
+  content: "";
+  background: linear-gradient(180deg, transparent, rgb(0 0 0 / .76));
+}
+
+.photo-card:hover img {
+  filter: saturate(1.16) contrast(1.05);
+  transform: scale(1);
+}
+
+.photo-card span {
+  position: relative;
+  z-index: 1;
+  align-self: end;
+  margin: .85rem;
+  padding: .5rem .65rem;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: rgb(7 17 31 / .76);
+  color: var(--ink);
+  font-size: .75rem;
+  font-weight: 950;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+}
+
 @keyframes breathe {
   50% { transform: translateY(-.6rem) scale(1.01); }
 }
@@ -724,7 +1092,8 @@ h3 {
 
 @media (max-width: 1100px) {
   .image-strip,
-  .timeline-list {
+  .timeline-list,
+  .voyage-stats {
     grid-template-columns: repeat(2, 1fr);
   }
 
@@ -737,11 +1106,19 @@ h3 {
   .manifesto-grid,
   .panorama,
   .code-poem,
-  .craft-grid {
+  .craft-grid,
+  .story-callout,
+  .source-banner,
+  .voyage-hero-grid,
+  .voyage-chapter,
+  .voyage-panel {
     grid-template-columns: 1fr;
   }
 
-  .chapter-number { position: static; }
+  .chapter-number,
+  .chapter-pin { position: static; }
+
+  .voyage-panel { min-height: auto; }
 }
 
 @media (max-width: 620px) {
@@ -753,9 +1130,13 @@ h3 {
 
   .nav-links { justify-content: flex-start; }
   .image-strip,
-  .timeline-list { grid-template-columns: 1fr; }
+  .timeline-list,
+  .voyage-stats,
+  .photo-grid { grid-template-columns: 1fr; }
   .sequence { min-height: 31rem; }
+  .voyage-map { min-height: 32rem; }
   .raft { width: 12rem; }
+  .photo-card.tall { min-height: 16rem; }
   h1 { font-size: clamp(3.9rem, 18vw, 5.8rem); }
 }
 

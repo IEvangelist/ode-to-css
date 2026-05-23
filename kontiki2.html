@@ -1,0 +1,238 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="A CSS-powered tribute subpage resharing selected excerpts and thumbnails from Håkon Wium Lie's Kon-Tiki2 story.">
+    <meta name="theme-color" content="#07111f">
+    <title>Kon-Tiki2 CSS Voyage — Ode to CSS</title>
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body class="voyage-page">
+    <a class="skip-link" href="#voyage-story">Skip to the voyage story</a>
+    <header class="voyage-hero" aria-labelledby="voyage-title">
+      <nav class="nav" aria-label="Primary navigation">
+        <a class="brand" href="./" aria-label="Ode to CSS home">ode-to-css</a>
+        <div class="nav-links">
+          <a href="./">Home</a>
+          <a href="#chapters">Chapters</a>
+          <a href="#source">Original story</a>
+        </div>
+      </nav>
+
+      <section class="voyage-hero-grid">
+        <div class="voyage-copy">
+          <p class="eyebrow">Håkontiki, reshared with care</p>
+          <h1 id="voyage-title">Forty-three days, two rafts, one living cascade.</h1>
+          <p class="lede">Selected excerpts and thumbnails from Håkon Wium Lie's first-leg Kon-Tiki2 story, reframed as a modern CSS-powered voyage. The full original remains his: spare, funny, salty, and absolutely worth reading.</p>
+          <div class="hero-actions" aria-label="Voyage actions">
+            <a class="button" href="#chapters">Enter the current</a>
+            <a class="button button-ghost" href="https://www.wiumlie.no/img/2015/kontiki2.html">Read Håkon's original</a>
+          </div>
+        </div>
+
+        <figure class="voyage-map" aria-label="CSS illustration of the Kon-Tiki2 route from Peru to Easter Island">
+          <span class="route-line route-line-one" aria-hidden="true"></span>
+          <span class="route-line route-line-two" aria-hidden="true"></span>
+          <span class="route-line route-line-three" aria-hidden="true"></span>
+          <span class="map-label peru">Callao, Peru</span>
+          <span class="map-label rapa-nui">Easter Island</span>
+          <span class="voyage-raft" aria-hidden="true"></span>
+          <figcaption>CSS gradients, masks, transforms, and scroll-friendly layout chart the mood without runtime JavaScript.</figcaption>
+        </figure>
+      </section>
+    </header>
+
+    <main id="voyage-story">
+      <section class="source-banner" id="source" aria-labelledby="source-title">
+        <div>
+          <p class="eyebrow">Source note</p>
+          <h2 id="source-title">This is a respectful remix, not a replacement.</h2>
+        </div>
+        <p>Text is excerpted and summarized from Håkon's original illustrated story. Photo thumbnails link back to images hosted with the original archive, and every chapter keeps the canonical page one click away.</p>
+        <a class="button" href="https://www.wiumlie.no/img/2015/kontiki2.html">Visit the original Kon-Tiki2 page</a>
+      </section>
+
+      <section class="voyage-stats" aria-label="Kon-Tiki2 story markers">
+        <article>
+          <strong>43</strong>
+          <span>days at sea before Easter Island</span>
+        </article>
+        <article>
+          <strong>2,046m</strong>
+          <span>deep-water CTD cast</span>
+        </article>
+        <article>
+          <strong>0</strong>
+          <span>nails or screws in the balsa raft</span>
+        </article>
+      </section>
+
+      <section id="chapters" class="voyage-chapters" aria-label="Kon-Tiki2 excerpt chapters">
+        <article class="voyage-chapter">
+          <div class="chapter-pin">01</div>
+          <div class="voyage-panel">
+            <p class="eyebrow">The idea</p>
+            <h2>Norwegian childhood stories become a Pacific question.</h2>
+            <p>Håkon opens with Thor Heyerdahl's old gravity: the tales he grew up with, the call for continued exploration, and a new ambition to sail balsawood rafts to Easter Island and back.</p>
+            <blockquote>“Being Norwegian, I grew up with tales of Thor Heyerdahl's brave Kon-Tiki expedition.”</blockquote>
+            <div class="photo-grid" aria-label="Kon-Tiki2 origin thumbnails">
+              <a class="photo-card tall" href="https://www.wiumlie.no/img/2015/kontiki2.html">
+                <span>Original illustrated story</span>
+              </a>
+              <a class="photo-card" href="https://www.wiumlie.no/img/2015/10-02-peru-sima-kt2/IMG_7903-m.JPG">
+                <img src="https://www.wiumlie.no/img/2015/10-02-peru-sima-kt2/IMG_7903-s.JPG" alt="Balsa logs arriving at the SIMA shipyard in Peru" loading="lazy" width="150" height="100" referrerpolicy="no-referrer">
+                <span>Balsa arrives</span>
+              </a>
+            </div>
+          </div>
+        </article>
+
+        <article class="voyage-chapter">
+          <div class="chapter-pin">02</div>
+          <div class="voyage-panel">
+            <p class="eyebrow">The build</p>
+            <h2>A raft assembled like a rule set: flexible, visible, tied together.</h2>
+            <p>Volunteers tied the logs with natural fibre rope. No nails, no screws, just disciplined structure and trust in materials. Underneath, echo sounders joined an ancient silhouette to modern instruments.</p>
+            <blockquote>“Volunteers quickly went to work and tied the logs together with natural fibre rope — no nails or screws!”</blockquote>
+            <div class="photo-grid" aria-label="Raft construction thumbnails">
+              <a class="photo-card" href="https://www.wiumlie.no/img/2015/10-22-peru-callao-sima/IMG_0451-m.JPG">
+                <img src="https://www.wiumlie.no/img/2015/10-22-peru-callao-sima/IMG_0451-s.JPG" alt="Volunteers working on Kon-Tiki2 raft construction" loading="lazy" width="150" height="100" referrerpolicy="no-referrer">
+                <span>Rope and logs</span>
+              </a>
+              <a class="photo-card" href="https://www.wiumlie.no/img/2015/10-29-kt2-sima-lift/IMG_2530-m.JPG">
+                <img src="https://www.wiumlie.no/img/2015/10-29-kt2-sima-lift/IMG_2530-s.JPG" alt="Kon-Tiki2 raft being prepared before launch" loading="lazy" width="150" height="100" referrerpolicy="no-referrer">
+                <span>Ready to lift</span>
+              </a>
+            </div>
+          </div>
+        </article>
+
+        <article class="voyage-chapter">
+          <div class="chapter-pin">03</div>
+          <div class="voyage-panel">
+            <p class="eyebrow">The launch</p>
+            <h2>Flags, blessings, ceremonies, then the open sea.</h2>
+            <p>The Peruvian Navy opened the shipyard and sent the rafts out with ceremony. The story moves from dockside dignity to a simple operational truth: before leaving, there was always one more thing to finish.</p>
+            <blockquote>“The Peruvian Navy generously allowed us to use their shipyard, and held a noble ceremony when the two rafts were launched into the ocean.”</blockquote>
+            <div class="photo-grid" aria-label="Launch ceremony thumbnails">
+              <a class="photo-card" href="https://www.wiumlie.no/img/2015/10-30-kt2-sima-ceremony/drone1-m.jpg">
+                <img src="https://www.wiumlie.no/img/2015/10-30-kt2-sima-ceremony/drone1-s.jpg" alt="Aerial view from the Kon-Tiki2 launch ceremony" loading="lazy" width="150" height="100" referrerpolicy="no-referrer">
+                <span>Ceremony</span>
+              </a>
+              <a class="photo-card" href="https://www.wiumlie.no/img/2015/11-07-kt2-departure/IMG_4695-m.JPG">
+                <img src="https://www.wiumlie.no/img/2015/11-07-kt2-departure/IMG_4695-s.JPG" alt="Kon-Tiki2 departing Callao for Easter Island" loading="lazy" width="150" height="100" referrerpolicy="no-referrer">
+                <span>Departure</span>
+              </a>
+            </div>
+          </div>
+        </article>
+
+        <article class="voyage-chapter">
+          <div class="chapter-pin">04</div>
+          <div class="voyage-panel">
+            <p class="eyebrow">The crossing</p>
+            <h2>The ocean teaches the interface.</h2>
+            <p>Two rafts, seven crew members each, left Callao on November 7. Steering came through guara boards. Feedback came as water over the deck, waves into the cabin, and the constant need to adjust.</p>
+            <blockquote>“We quickly learnt how to adjust guara boards up or down to set a course.”</blockquote>
+            <div class="photo-grid" aria-label="Pacific crossing thumbnails">
+              <a class="photo-card" href="https://www.wiumlie.no/img/2015/11-12-kt2-day6/drone2-m.jpg">
+                <img src="https://www.wiumlie.no/img/2015/11-12-kt2-day6/drone2-s.jpg" alt="Kon-Tiki2 raft under sail at sea" loading="lazy" width="150" height="100" referrerpolicy="no-referrer">
+                <span>Under sail</span>
+              </a>
+              <a class="photo-card" href="https://www.wiumlie.no/img/2015/12-05-kt2-day29/IMG_6169-m.JPG">
+                <img src="https://www.wiumlie.no/img/2015/12-05-kt2-day29/IMG_6169-s.JPG" alt="High waves around the Kon-Tiki2 raft" loading="lazy" width="150" height="100" referrerpolicy="no-referrer">
+                <span>Wet deck</span>
+              </a>
+            </div>
+          </div>
+        </article>
+
+        <article class="voyage-chapter">
+          <div class="chapter-pin">05</div>
+          <div class="voyage-panel">
+            <p class="eyebrow">The science</p>
+            <h2>A raft can still ask twenty-first-century questions.</h2>
+            <p>The expedition looked for plastics, launched drifters, lowered a CTD to 2,046 metres, and used a manta trawl when weather allowed. The old form carried new instruments.</p>
+            <blockquote>“At sea, we looked for plastics, released drifters, and sent a CTD down to 2046 metres — and winched it back up!”</blockquote>
+            <div class="photo-grid" aria-label="Science at sea thumbnails">
+              <a class="photo-card" href="https://www.wiumlie.no/img/2015/12-08-kt2-day32/IMG_7128-m.JPG">
+                <img src="https://www.wiumlie.no/img/2015/12-08-kt2-day32/IMG_7128-s.JPG" alt="Scientific equipment used during the Kon-Tiki2 expedition" loading="lazy" width="150" height="100" referrerpolicy="no-referrer">
+                <span>CTD work</span>
+              </a>
+              <a class="photo-card" href="https://www.wiumlie.no/img/2015/12-09-kt2-day33/IMG_7697-m.JPG">
+                <img src="https://www.wiumlie.no/img/2015/12-09-kt2-day33/IMG_7697-s.JPG" alt="Manta trawl launched from the raft" loading="lazy" width="150" height="100" referrerpolicy="no-referrer">
+                <span>Manta trawl</span>
+              </a>
+            </div>
+          </div>
+        </article>
+
+        <article class="voyage-chapter">
+          <div class="chapter-pin">06</div>
+          <div class="voyage-panel">
+            <p class="eyebrow">Life onboard</p>
+            <h2>Food, birds, whales, weather, and a bottle standing still.</h2>
+            <p>The story keeps its humor because the details are so human: oatmeal, beans, bread, fish, frigatebirds, flying fish, gale-force winds, and an apple cider bottle steady enough to become a tiny miracle.</p>
+            <blockquote>“We had steady winds all along, often gale force. But the rafts were stable.”</blockquote>
+            <div class="photo-grid" aria-label="Life onboard thumbnails">
+              <a class="photo-card" href="https://www.wiumlie.no/img/2015/12-07-kt2-day31/IMG_6989b-m.JPG">
+                <img src="https://www.wiumlie.no/img/2015/12-07-kt2-day31/IMG_6989b-s.JPG" alt="Wildlife seen from the Kon-Tiki2 raft" loading="lazy" width="150" height="100" referrerpolicy="no-referrer">
+                <span>Wildlife</span>
+              </a>
+              <a class="photo-card" href="https://www.wiumlie.no/img/2015/12-04-kt2-day28/IMG_5752-m.JPG">
+                <img src="https://www.wiumlie.no/img/2015/12-04-kt2-day28/IMG_5752-s.JPG" alt="Stable bottle onboard during gale-force winds" loading="lazy" width="150" height="100" referrerpolicy="no-referrer">
+                <span>Stable raft</span>
+              </a>
+            </div>
+          </div>
+        </article>
+
+        <article class="voyage-chapter">
+          <div class="chapter-pin">07</div>
+          <div class="voyage-panel">
+            <p class="eyebrow">The electrons</p>
+            <h2>Even at sea, someone has to keep the stack online.</h2>
+            <p>Håkon's dry line about responsibility for electrons turns the expedition into something wonderfully specific: this was seamanship, science, communication, and debugging in the Pacific.</p>
+            <blockquote>“I was responsible for all electrons onboard the raft, and most of them behaved.”</blockquote>
+            <div class="photo-grid" aria-label="Electronics onboard thumbnails">
+              <a class="photo-card" href="https://www.wiumlie.no/img/2015/12-17-kt2-day41/IMG_9841-m.JPG">
+                <img src="https://www.wiumlie.no/img/2015/12-17-kt2-day41/IMG_9841-s.JPG" alt="Electronics and communication work onboard the raft" loading="lazy" width="150" height="100" referrerpolicy="no-referrer">
+                <span>Electrons</span>
+              </a>
+              <a class="photo-card" href="https://www.wiumlie.no/img/2015/11-30-kt2-day24/IMG_3851-m.JPG">
+                <img src="https://www.wiumlie.no/img/2015/11-30-kt2-day24/IMG_3851-s.JPG" alt="Equipment onboard the Kon-Tiki2 raft" loading="lazy" width="150" height="100" referrerpolicy="no-referrer">
+                <span>Signals</span>
+              </a>
+            </div>
+          </div>
+        </article>
+
+        <article class="voyage-chapter">
+          <div class="chapter-pin">08</div>
+          <div class="voyage-panel">
+            <p class="eyebrow">Landfall</p>
+            <h2>Easter Island appears first as a shadow, then as arrival.</h2>
+            <p>After 43 days, the island came into view. Håkon's sentence lands with the whole weight of the page behind it: not just arrival, but an honorable way of arriving.</p>
+            <blockquote>“This is an honorable way of arriving on Easter Island. Epic.”</blockquote>
+            <div class="photo-grid" aria-label="Easter Island arrival thumbnails">
+              <a class="photo-card" href="https://www.wiumlie.no/img/2015/12-18-kt2-day42/IMG_0151c-m.JPG">
+                <img src="https://www.wiumlie.no/img/2015/12-18-kt2-day42/IMG_0151c-s.JPG" alt="Easter Island appearing on the horizon" loading="lazy" width="150" height="100" referrerpolicy="no-referrer">
+                <span>Land ahead</span>
+              </a>
+              <a class="photo-card" href="https://www.wiumlie.no/img/2015/12-19-kt2-day43/IMG_3231-m.JPG">
+                <img src="https://www.wiumlie.no/img/2015/12-19-kt2-day43/IMG_3231-s.JPG" alt="Crew after landing on Easter Island" loading="lazy" width="150" height="100" referrerpolicy="no-referrer">
+                <span>Grass again</span>
+              </a>
+            </div>
+          </div>
+        </article>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <p>Excerpted with attribution from <a href="https://www.wiumlie.no/img/2015/kontiki2.html">Håkon Wium Lie's Kon-Tiki2 story</a>.</p>
+      <a href="#voyage-title">Return to the current</a>
+    </footer>
+  </body>
+</html>
