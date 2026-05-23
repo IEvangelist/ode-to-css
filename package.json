@@ -27,7 +27,7 @@
   "bugs": {
     "url": "https://github.com/IEvangelist/ode-to-hakon-wium-lie/issues"
   },
-  "homepage": "https://IEvangelist.github.io/ode-to-css/",
+  "homepage": "https://IEvangelist.github.io/ode-to-hakon-wium-lie/",
   "devDependencies": {
     "@axe-core/playwright": "^4.11.3",
     "@playwright/test": "^1.60.0"
