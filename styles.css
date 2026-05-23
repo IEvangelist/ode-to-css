@@ -56,7 +56,8 @@ body::before {
 
 body::after {
   position: fixed;
-  inset: auto -10% 0;
+  inset-block: auto 0;
+  inset-inline: 0;
   height: 22rem;
   pointer-events: none;
   content: "";
