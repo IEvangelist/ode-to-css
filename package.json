@@ -1,23 +1,32 @@
 {
-  "name": "ode-to-hakon-wium-lie",
+  "name": "ode-to-css",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "A storytelling ode to Håkon Wium Lie and the enduring craft of CSS.",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "rm -rf dist && mkdir -p dist && cp index.html styles.css dist/",
+    "preview": "python3 -m http.server 4173 -d .",
+    "test": "playwright test",
+    "test:ui": "playwright test --ui",
+    "playwright:install": "playwright install --with-deps chromium",
+    "ralph": "playwright test tests/site.spec.mjs --project=chromium"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/IEvangelist/ode-to-hakon-wium-lie.git"
   },
-  "keywords": [],
+  "keywords": [
+    "css",
+    "hakon-wium-lie",
+    "tribute",
+    "web"
+  ],
   "author": "",
-  "license": "ISC",
+  "license": "MIT",
   "type": "commonjs",
   "bugs": {
     "url": "https://github.com/IEvangelist/ode-to-hakon-wium-lie/issues"
   },
-  "homepage": "https://github.com/IEvangelist/ode-to-hakon-wium-lie#readme",
+  "homepage": "https://IEvangelist.github.io/ode-to-css/",
   "devDependencies": {
     "@playwright/test": "^1.60.0"
   }
