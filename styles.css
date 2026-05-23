@@ -485,7 +485,6 @@ h3 {
   gap: 1rem;
   min-height: 72vh;
   align-items: stretch;
-  perspective: 90rem;
   view-timeline-name: --strip;
 }
 
@@ -711,8 +710,8 @@ h3 {
 }
 
 @keyframes reveal {
-  from { opacity: .25; transform: translateY(4rem) rotateX(18deg); }
-  to { opacity: 1; transform: translateY(0) rotateX(0); }
+  from { opacity: .25; transform: translateY(4rem); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
 @keyframes chart {
