@@ -53,6 +53,7 @@ a {
   color: inherit;
   text-decoration-thickness: .08em;
   text-underline-offset: .25em;
+  overflow-wrap: break-word;
 }
 
 .skip-link {
@@ -128,7 +129,10 @@ a {
   padding-block: 4rem 7rem;
 }
 
-.hero-copy { max-width: 54rem; }
+.hero-copy {
+  max-width: 54rem;
+  min-width: 0;
+}
 
 .eyebrow {
   margin: 0 0 1rem;
@@ -148,6 +152,8 @@ h1,
 h2 {
   line-height: .95;
   letter-spacing: -.07em;
+  overflow-wrap: break-word;
+  text-wrap: balance;
 }
 
 h1 {
@@ -339,6 +345,7 @@ h3 {
 }
 
 .chapter-copy {
+  min-width: 0;
   min-height: 52vh;
   padding: clamp(1.5rem, 4vw, 4rem);
   border: 1px solid var(--line);
@@ -454,7 +461,12 @@ h3 {
 }
 
 .footer p { margin: 0; }
-.footer a { color: var(--aqua); }
+.footer a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  color: var(--aqua);
+}
 
 @keyframes breathe {
   50% { transform: translateY(-.6rem) scale(1.01); }

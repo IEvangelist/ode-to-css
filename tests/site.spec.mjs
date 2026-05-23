@@ -8,6 +8,7 @@ const responsiveViewports = [
   { name: 'laptop', width: 1280, height: 820 },
   { name: 'wide desktop', width: 1440, height: 1024 }
 ];
+const entryPath = './';
 
 async function expectWcagAaaClean(page) {
   const results = await new AxeBuilder({ page })
@@ -43,7 +44,7 @@ async function expectResponsiveUx(page) {
 
 test.describe('ode-to-css storytelling site', () => {
   test('loads core story, passes WCAG AAA-oriented checks, and survives a 100-step Ralph loop', async ({ page }) => {
-    await page.goto('/');
+    await page.goto(entryPath);
     await expect(page).toHaveTitle(/Ode to CSS/);
     await expect(page.getByRole('heading', { name: /cascade becomes a current/i })).toBeVisible();
     await expect(page.getByRole('link', { name: /Begin the voyage/i })).toBeVisible();
@@ -77,7 +78,7 @@ test.describe('ode-to-css storytelling site', () => {
   for (const viewport of responsiveViewports) {
     test(`responsive UX and WCAG AAA-oriented validation at ${viewport.name}`, async ({ page }) => {
       await page.setViewportSize({ width: viewport.width, height: viewport.height });
-      await page.goto('/');
+      await page.goto(entryPath);
       await expect(page.getByRole('heading', { name: /cascade becomes a current/i })).toBeVisible();
       await expect(page.getByRole('navigation', { name: /primary navigation/i })).toBeVisible();
       await expectResponsiveUx(page);
