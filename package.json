@@ -13,7 +13,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/IEvangelist/ode-to-hakon-wium-lie.git"
+    "url": "git+https://github.com/IEvangelist/ode-to-css.git"
   },
   "keywords": [
     "css",
@@ -25,9 +25,9 @@
   "license": "MIT",
   "type": "commonjs",
   "bugs": {
-    "url": "https://github.com/IEvangelist/ode-to-hakon-wium-lie/issues"
+    "url": "https://github.com/IEvangelist/ode-to-css/issues"
   },
-  "homepage": "https://IEvangelist.github.io/ode-to-hakon-wium-lie/",
+  "homepage": "https://IEvangelist.github.io/ode-to-css/",
   "devDependencies": {
     "@axe-core/playwright": "^4.11.3",
     "@playwright/test": "^1.60.0"
