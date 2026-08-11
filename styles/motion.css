@@ -19,18 +19,18 @@
       opacity: .45;
       transform: translateY(3rem) scale(.985);
     }
-
-    @keyframes content-enter {
-      from {
-        transform: translateY(2rem);
-      }
-      to {
-        transform: translateY(0);
-      }
-    }
     to {
       opacity: 1;
       transform: translateY(0) scale(1);
+    }
+  }
+
+  @keyframes content-enter {
+    from {
+      transform: translateY(2rem);
+    }
+    to {
+      transform: translateY(0);
     }
   }
 
@@ -64,7 +64,7 @@
 
     .hero-photo,
     .voyage-hero-photo {
-      animation: hero-enter 1.2s .12s var(--ease-out) both;
+      animation: content-enter 1.2s .12s var(--ease-out) both;
     }
 
     .action,
