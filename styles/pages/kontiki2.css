@@ -1,0 +1,684 @@
+@layer pages {
+  .voyage-page .site-header-overlay {
+    position: absolute;
+    inset: 0 0 auto;
+    color: var(--inverse-ink);
+    background: transparent;
+    border-color: color-mix(in oklch, var(--inverse-ink) 35%, transparent);
+    backdrop-filter: none;
+  }
+
+  .voyage-page .site-header-overlay a:hover {
+    color: var(--inverse-ink);
+  }
+
+  .voyage-hero {
+    position: relative;
+    min-block-size: 100dvh;
+    display: grid;
+    align-items: end;
+    overflow: clip;
+    color: var(--inverse-ink);
+    background: var(--inverse);
+    isolation: isolate;
+  }
+
+  .voyage-hero-photo {
+    position: absolute;
+    inset: 0;
+    z-index: -2;
+  }
+
+  .voyage-hero-photo img {
+    inline-size: 100%;
+    block-size: 100%;
+    object-fit: cover;
+    filter: saturate(.78) contrast(1.08);
+  }
+
+  .voyage-hero::after {
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    content: "";
+    background:
+      linear-gradient(90deg, color-mix(in oklch, var(--inverse) 82%, transparent), transparent 68%),
+      linear-gradient(0deg, color-mix(in oklch, var(--inverse) 88%, transparent), transparent 62%);
+  }
+
+  .voyage-hero-copy {
+    align-items: end;
+    row-gap: var(--space-2);
+    padding-block: 9rem var(--space-6);
+  }
+
+  .voyage-kicker {
+    grid-column: 1 / span 4;
+    color: var(--inverse-muted);
+    font-variation-settings: "MONO" 1, "CASL" 0, "wght" 620, "slnt" 0, "CRSV" .5;
+  }
+
+  .voyage-hero-copy h1 {
+    grid-column: 1 / span 9;
+    font-size: clamp(4rem, 10.8vw, 11rem);
+  }
+
+  .voyage-hero-copy h1 span {
+    display: block;
+  }
+
+  .voyage-hero-copy h1 span:last-child {
+    font-size: .5em;
+    font-variation-settings: "MONO" 0, "CASL" .25, "wght" 500, "slnt" 0, "CRSV" .5;
+    letter-spacing: -.04em;
+  }
+
+  .voyage-hero-copy > p:not(.voyage-kicker) {
+    grid-column: 1 / span 5;
+    color: var(--inverse-muted);
+    font-size: var(--step-1);
+  }
+
+  .voyage-hero-copy .action {
+    grid-column: 7 / span 3;
+    justify-self: start;
+  }
+
+  .voyage-hero-credit {
+    position: absolute;
+    inset: auto var(--page-gutter) 1rem auto;
+    max-inline-size: 30rem;
+    color: var(--inverse-muted);
+    font-size: var(--step--1);
+    font-variation-settings: "MONO" 1, "CASL" 0, "wght" 480, "slnt" 0, "CRSV" .5;
+  }
+
+  .voyage-hero-credit a {
+    display: inline-flex;
+    align-items: center;
+    min-block-size: 3rem;
+    color: var(--inverse-ink);
+  }
+
+  .source-note {
+    row-gap: var(--space-3);
+    align-items: start;
+    padding-block: var(--space-5);
+    border-block-end: var(--rule);
+  }
+
+  .source-note h2 {
+    grid-column: 1 / span 4;
+    font-size: var(--step-2);
+  }
+
+  .source-note p {
+    grid-column: 5 / span 5;
+    color: var(--ink-soft);
+  }
+
+  .source-note .source-link {
+    grid-column: 10 / -1;
+    justify-self: end;
+  }
+
+  .voyage-facts {
+    padding-block: var(--space-5);
+  }
+
+  .voyage-facts p {
+    grid-column: span 3;
+    padding-block-start: var(--space-2);
+    border-block-start: .3rem solid var(--accent);
+  }
+
+  .voyage-facts strong,
+  .voyage-facts span {
+    display: block;
+  }
+
+  .voyage-facts strong {
+    font-size: var(--step-3);
+    line-height: 1;
+    letter-spacing: -.05em;
+  }
+
+  .voyage-facts span {
+    margin-block-start: .5rem;
+    color: var(--ink-soft);
+  }
+
+  .story-chapter {
+    padding-block: var(--space-6);
+    border-block-start: var(--rule);
+  }
+
+  .story-chapter header h2 {
+    margin-block-start: var(--space-2);
+  }
+
+  .story-chapter header > p:not(.chapter-date) {
+    margin-block-start: var(--space-3);
+    color: var(--ink-soft);
+    font-size: var(--step-1);
+  }
+
+  .chapter-origin {
+    row-gap: var(--space-4);
+  }
+
+  .chapter-origin > header {
+    grid-column: 1 / span 5;
+  }
+
+  .chapter-origin .chapter-prose {
+    grid-column: 7 / -1;
+    padding-block-start: var(--space-5);
+  }
+
+  .chapter-origin .chapter-prose > p {
+    max-inline-size: 55ch;
+    color: var(--ink-soft);
+  }
+
+  .chapter-origin blockquote {
+    margin-block-start: var(--space-4);
+  }
+
+  .photo-origin {
+    grid-column: 2 / span 9;
+    margin-block-start: var(--space-4);
+    aspect-ratio: 16 / 9;
+  }
+
+  .photo-origin figcaption {
+    position: absolute;
+    inset: 100% 0 auto;
+  }
+
+  .chapter-build header {
+    row-gap: var(--space-2);
+  }
+
+  .chapter-build header > * {
+    grid-column: 3 / span 7;
+  }
+
+  .build-contact-sheet {
+    grid-auto-flow: dense;
+    align-items: start;
+    margin-block-start: var(--space-5);
+  }
+
+  .build-contact-sheet figure:nth-child(1) {
+    grid-column: 1 / span 5;
+    aspect-ratio: 4 / 5;
+  }
+
+  .build-contact-sheet figure:nth-child(2) {
+    grid-column: 7 / -1;
+    aspect-ratio: 3 / 2;
+    margin-block-start: var(--space-5);
+  }
+
+  .build-contact-sheet figure:nth-child(3) {
+    grid-column: 5 / span 5;
+    aspect-ratio: 4 / 3;
+    margin-block-start: calc(-1 * var(--space-4));
+  }
+
+  .build-quote {
+    margin-block-start: var(--space-5);
+    color: var(--accent);
+    font-size: var(--step-4);
+    text-align: center;
+  }
+
+  .chapter-launch {
+    position: relative;
+    min-block-size: 100dvh;
+    display: grid;
+    align-items: end;
+    overflow: clip;
+    color: var(--inverse-ink);
+    background: var(--inverse);
+    isolation: isolate;
+  }
+
+  .launch-photo {
+    position: absolute;
+    inset: 0;
+    z-index: -2;
+  }
+
+  .launch-photo img {
+    inline-size: 100%;
+    block-size: 100%;
+    object-fit: cover;
+  }
+
+  .chapter-launch::after {
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    content: "";
+    background: linear-gradient(0deg, color-mix(in oklch, var(--inverse) 94%, transparent) 0 12%, transparent 72%);
+  }
+
+  .chapter-launch .chapter-date,
+  .chapter-electrons .chapter-date {
+    color: var(--accent-inverse);
+  }
+
+  .launch-copy {
+    align-items: end;
+    padding-block: var(--space-6) var(--space-4);
+  }
+
+  .launch-copy > * {
+    grid-column: 1 / span 6;
+  }
+
+  .launch-copy h2 {
+    max-inline-size: 11ch;
+    margin-block: var(--space-2);
+    font-size: var(--step-4);
+  }
+
+  .launch-copy p:not(.chapter-date, .photo-credit) {
+    max-inline-size: 50ch;
+    color: var(--inverse-muted);
+  }
+
+  .launch-copy .photo-credit {
+    grid-column: 9 / -1;
+    color: var(--inverse-muted);
+  }
+
+  .chapter-crossing {
+    row-gap: var(--space-5);
+  }
+
+  .route-rail {
+    grid-column: 1 / span 2;
+    grid-row: 1 / span 2;
+    display: grid;
+    grid-template-rows: auto minmax(16rem, 1fr) auto;
+    justify-items: start;
+    min-block-size: 75dvh;
+    color: var(--accent);
+    font-variation-settings: "MONO" 1, "CASL" 0, "wght" 620, "slnt" 0, "CRSV" .5;
+  }
+
+  .route-line {
+    inline-size: .2rem;
+    block-size: 100%;
+    margin-inline-start: .45rem;
+    background: var(--accent);
+    transform-origin: top;
+  }
+
+  .chapter-crossing > header {
+    grid-column: 4 / span 6;
+  }
+
+  .chapter-crossing > header blockquote {
+    margin-block-start: var(--space-4);
+  }
+
+  .crossing-photo-wide {
+    grid-column: 4 / -1;
+    aspect-ratio: 16 / 9;
+  }
+
+  .crossing-photo-small {
+    grid-column: 8 / -1;
+    aspect-ratio: 4 / 3;
+  }
+
+  .chapter-science {
+    background:
+      linear-gradient(var(--line) 1px, transparent 1px),
+      linear-gradient(90deg, var(--line) 1px, transparent 1px);
+    background-size: 2.5rem 2.5rem;
+  }
+
+  .science-grid {
+    row-gap: var(--space-4);
+  }
+
+  .science-grid > header {
+    grid-column: 1 / span 5;
+  }
+
+  .field-notes {
+    grid-column: 8 / -1;
+    align-self: end;
+  }
+
+  .field-notes div {
+    display: grid;
+    grid-template-columns: 6rem 1fr;
+    gap: var(--space-2);
+    padding-block: var(--space-2);
+    border-block-start: var(--rule);
+  }
+
+  .field-notes div:last-child {
+    border-block-end: var(--rule);
+  }
+
+  .field-notes dt {
+    color: var(--accent);
+    font-variation-settings: "MONO" 1, "CASL" 0, "wght" 620, "slnt" 0, "CRSV" .5;
+  }
+
+  .field-notes dd {
+    color: var(--ink-soft);
+  }
+
+  .science-photo-one {
+    grid-column: 1 / span 7;
+    aspect-ratio: 3 / 2;
+  }
+
+  .science-photo-two {
+    grid-column: 9 / -1;
+    align-self: end;
+    aspect-ratio: 4 / 5;
+    margin-block-start: var(--space-5);
+  }
+
+  .chapter-life {
+    row-gap: var(--space-4);
+  }
+
+  .chapter-life > header {
+    grid-column: 1 / span 6;
+  }
+
+  .life-mosaic {
+    grid-column: 1 / -1;
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    gap: var(--space-2);
+    align-items: stretch;
+  }
+
+  .life-mosaic figure {
+    min-block-size: 22rem;
+  }
+
+  .life-sunset {
+    grid-row: span 2;
+  }
+
+  .chapter-electrons {
+    color: var(--inverse-ink);
+    background: var(--inverse);
+  }
+
+  .electrons-grid {
+    row-gap: var(--space-4);
+  }
+
+  .electrons-grid > header {
+    grid-column: 1 / span 6;
+  }
+
+  .electrons-grid > blockquote {
+    grid-column: 8 / -1;
+    align-self: end;
+    color: var(--accent-inverse);
+  }
+
+  .electrons-main {
+    grid-column: 2 / span 7;
+    aspect-ratio: 16 / 10;
+  }
+
+  .electrons-detail {
+    grid-column: 9 / -1;
+    align-self: end;
+    aspect-ratio: 4 / 5;
+  }
+
+  .chapter-electrons figcaption {
+    color: var(--inverse-muted);
+  }
+
+  .chapter-landfall {
+    padding-block: 0 var(--space-6);
+  }
+
+  .landfall-horizon {
+    aspect-ratio: 16 / 7;
+    overflow: hidden;
+    background: var(--line);
+  }
+
+  .landfall-horizon img {
+    inline-size: 100%;
+    block-size: 100%;
+    object-fit: cover;
+  }
+
+  .landfall-copy {
+    row-gap: var(--space-3);
+    padding-block: var(--space-5);
+  }
+
+  .landfall-copy > * {
+    grid-column: 4 / span 6;
+  }
+
+  .landfall-copy blockquote {
+    margin-block-start: var(--space-3);
+    color: var(--accent);
+  }
+
+  .landfall-crew {
+    grid-column: 3 / span 8;
+    aspect-ratio: 16 / 10;
+  }
+
+  .photo-credits {
+    row-gap: var(--space-3);
+    padding-block: var(--space-5);
+    border-block-start: var(--rule);
+  }
+
+  .photo-credits h2 {
+    grid-column: 1 / span 4;
+    font-size: var(--step-2);
+  }
+
+  .photo-credits p {
+    grid-column: 5 / span 7;
+    color: var(--ink-soft);
+  }
+
+  @media (max-width: 800px) {
+    .voyage-page .site-header-overlay {
+      color: var(--inverse-ink);
+    }
+
+    .voyage-hero {
+      min-block-size: 100svh;
+    }
+
+    .voyage-hero::after {
+      background: linear-gradient(0deg, color-mix(in oklch, var(--inverse) 94%, transparent) 0 28%, color-mix(in oklch, var(--inverse) 20%, transparent) 78%);
+    }
+
+    .voyage-kicker,
+    .voyage-hero-copy h1,
+    .voyage-hero-copy > p:not(.voyage-kicker),
+    .voyage-hero-copy .action,
+    .source-note h2,
+    .source-note p,
+    .source-note .source-link,
+    .chapter-origin > header,
+    .chapter-origin .chapter-prose,
+    .photo-origin,
+    .chapter-build header > *,
+    .launch-copy > *,
+    .launch-copy .photo-credit,
+    .chapter-crossing > header,
+    .crossing-photo-wide,
+    .crossing-photo-small,
+    .science-grid > header,
+    .field-notes,
+    .science-photo-one,
+    .science-photo-two,
+    .chapter-life > header,
+    .life-mosaic,
+    .electrons-grid > header,
+    .electrons-grid > blockquote,
+    .electrons-main,
+    .electrons-detail,
+    .landfall-copy > *,
+    .landfall-crew,
+    .photo-credits h2,
+    .photo-credits p {
+      grid-column: 1 / -1;
+    }
+
+    .voyage-hero-copy {
+      padding-block-end: var(--space-5);
+    }
+
+    .voyage-hero-copy h1 {
+      font-size: clamp(3.6rem, 18vw, 7rem);
+    }
+
+    .voyage-hero-copy > p:not(.voyage-kicker) {
+      max-inline-size: 30rem;
+    }
+
+    .voyage-hero-copy .action {
+      justify-self: start;
+    }
+
+    .voyage-hero-credit {
+      display: none;
+    }
+
+    .source-note .source-link {
+      justify-self: start;
+    }
+
+    .voyage-facts {
+      row-gap: var(--space-3);
+    }
+
+    .voyage-facts p {
+      grid-column: span 2;
+    }
+
+    .chapter-origin .chapter-prose {
+      padding-block-start: 0;
+    }
+
+    .photo-origin {
+      margin-block-start: var(--space-2);
+    }
+
+    .chapter-build header > * {
+      grid-column: 1 / -1;
+    }
+
+    .build-contact-sheet figure:nth-child(n) {
+      grid-column: 1 / -1;
+      aspect-ratio: 4 / 3;
+      margin-block-start: var(--space-3);
+    }
+
+    .build-contact-sheet figure:nth-child(even) {
+      margin-inline-start: 15%;
+    }
+
+    .build-contact-sheet figure:nth-child(odd) {
+      margin-inline-end: 15%;
+    }
+
+    .chapter-launch {
+      min-block-size: 78dvh;
+    }
+
+    .launch-copy {
+      align-content: end;
+    }
+
+    .route-rail {
+      grid-column: 1 / -1;
+      grid-row: auto;
+      grid-template-columns: auto 1fr auto;
+      grid-template-rows: auto;
+      align-items: center;
+      min-block-size: auto;
+    }
+
+    .route-line {
+      inline-size: 100%;
+      block-size: .2rem;
+      margin-inline: .75rem;
+      transform-origin: left;
+    }
+
+    .chapter-crossing > header {
+      margin-block-start: var(--space-3);
+    }
+
+    .science-photo-two {
+      inline-size: 72%;
+      justify-self: end;
+      margin-block-start: 0;
+    }
+
+    .life-mosaic {
+      grid-template-columns: 1fr 1fr;
+    }
+
+    .life-sunset {
+      grid-column: 1 / -1;
+      grid-row: auto;
+    }
+
+    .life-mosaic figure {
+      min-block-size: 16rem;
+    }
+
+    .electrons-main,
+    .electrons-detail {
+      aspect-ratio: 4 / 3;
+    }
+
+    .electrons-detail {
+      inline-size: 72%;
+      justify-self: end;
+    }
+
+    .landfall-horizon {
+      aspect-ratio: 4 / 3;
+    }
+
+    .landfall-crew {
+      aspect-ratio: 4 / 3;
+    }
+  }
+
+  @media (max-width: 500px) {
+    .voyage-facts p {
+      grid-column: 1 / -1;
+    }
+
+    .life-mosaic {
+      grid-template-columns: 1fr;
+    }
+
+    .life-mosaic figure {
+      min-block-size: 18rem;
+    }
+  }
+}

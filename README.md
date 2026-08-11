@@ -1,6 +1,6 @@
 # ode-to-css
 
-A static storytelling tribute to Håkon Wium Lie, creator of CSS. The site is intentionally small: semantic HTML, expressive CSS, no runtime JavaScript, and a Playwright-powered Ralph loop that scrolls and screenshots the experience 100 times.
+A static editorial tribute to Håkon Wium Lie, creator of CSS. The site uses semantic HTML, cascade-layered modern CSS, real Kon-Tiki2 expedition photography linked from Håkon's canonical archive, no runtime JavaScript, and Playwright validation.
 
 View the deployed site at <https://IEvangelist.github.io/ode-to-css/>.
 
@@ -10,14 +10,19 @@ View the deployed site at <https://IEvangelist.github.io/ode-to-css/>.
 npm ci
 npm run playwright:install
 npm run ralph
-npm run build
 ```
 
-Preview the site with:
+Build and preview the site with:
 
 ```bash
 npm run preview
 ```
+
+The build combines the native CSS modules in `styles/`, copies the Recursive variable font, and emits the deployable `dist` directory.
+
+## Photography
+
+Voyage photographs remain hosted in Håkon Wium Lie's original Kon-Tiki2 archive and are not copied into this repository. Every displayed photograph links to its canonical file and includes a visible archive credit. See `assets/photo-credits.json`.
 
 Run the same accessibility-first validation against a deployed URL with:
 

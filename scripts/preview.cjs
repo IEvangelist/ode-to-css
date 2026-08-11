@@ -2,14 +2,19 @@ const fs = require('fs');
 const http = require('http');
 const path = require('path');
 
-const root = process.cwd();
+const root = path.resolve(process.cwd(), process.argv[2] || '.');
 const port = Number(process.env.PORT || 4173);
 const host = process.env.HOST || '127.0.0.1';
 const types = {
   '.css': 'text/css; charset=utf-8',
   '.html': 'text/html; charset=utf-8',
+  '.jpeg': 'image/jpeg',
+  '.jpg': 'image/jpeg',
+  '.json': 'application/json; charset=utf-8',
   '.js': 'text/javascript; charset=utf-8',
-  '.svg': 'image/svg+xml'
+  '.svg': 'image/svg+xml',
+  '.webp': 'image/webp',
+  '.woff2': 'font/woff2'
 };
 
 const server = http.createServer((request, response) => {
@@ -19,7 +24,8 @@ const server = http.createServer((request, response) => {
   }
 
   const file = path.resolve(root, `.${pathname}`);
-  if (!file.startsWith(root)) {
+  const relativeFile = path.relative(root, file);
+  if (relativeFile.startsWith('..') || path.isAbsolute(relativeFile)) {
     response.writeHead(403);
     response.end('Forbidden');
     return;
@@ -38,5 +44,5 @@ const server = http.createServer((request, response) => {
 });
 
 server.listen(port, host, () => {
-  console.log(`http://localhost:${port}/`);
+  console.log(`Serving ${root} at http://localhost:${port}/`);
 });

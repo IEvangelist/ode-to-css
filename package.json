@@ -4,7 +4,7 @@
   "description": "A storytelling ode to Håkon Wium Lie and the enduring craft of CSS.",
   "scripts": {
     "build": "node scripts/build.cjs",
-    "preview": "node scripts/preview.cjs",
+    "preview": "npm run build && node scripts/preview.cjs dist",
     "test": "playwright test",
     "test:ui": "playwright test --ui",
     "playwright:install": "playwright install --with-deps chromium",
@@ -29,6 +29,7 @@
   },
   "homepage": "https://IEvangelist.github.io/ode-to-css/",
   "devDependencies": {
+    "@fontsource-variable/recursive": "^5.3.0",
     "@axe-core/playwright": "^4.11.3",
     "@playwright/test": "^1.60.0"
   }

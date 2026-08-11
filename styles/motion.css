@@ -1,0 +1,136 @@
+@view-transition {
+  navigation: auto;
+}
+
+@layer motion {
+  @keyframes hero-enter {
+    from {
+      opacity: 0;
+      transform: translateY(2rem);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes image-enter {
+    from {
+      opacity: .45;
+      transform: translateY(3rem) scale(.985);
+    }
+
+    @keyframes content-enter {
+      from {
+        transform: translateY(2rem);
+      }
+      to {
+        transform: translateY(0);
+      }
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+  }
+
+  @keyframes line-grow {
+    from {
+      transform: scaleY(0);
+    }
+    to {
+      transform: scaleY(1);
+    }
+  }
+
+  @keyframes line-grow-horizontal {
+    from {
+      transform: scaleX(0);
+    }
+    to {
+      transform: scaleX(1);
+    }
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    html {
+      scroll-behavior: smooth;
+    }
+
+    .hero-copy,
+    .voyage-hero-copy {
+      animation: hero-enter .9s var(--ease-out) both;
+    }
+
+    .hero-photo,
+    .voyage-hero-photo {
+      animation: hero-enter 1.2s .12s var(--ease-out) both;
+    }
+
+    .action,
+    .nav-links a,
+    .wordmark,
+    .text-link,
+    .source-link {
+      transition:
+        color .25s var(--ease-out),
+        background-color .25s var(--ease-out),
+        border-color .25s var(--ease-out),
+        transform .25s var(--ease-out);
+    }
+
+    .credited-photo img,
+    .launch-photo img,
+    .landfall-horizon img {
+      transition: transform .7s var(--ease-out), filter .7s var(--ease-out);
+    }
+
+    .credited-photo:hover img {
+      transform: scale(1.015);
+      filter: saturate(1.02) contrast(1.02);
+    }
+
+    @supports (animation-timeline: view()) {
+      .proposal-copy,
+      .cascade-layer,
+      .history-line li,
+      .story-chapter header,
+      .field-notes {
+        animation: content-enter both linear;
+        animation-timeline: view();
+        animation-range: entry 5% cover 34%;
+      }
+
+      .story-photo > a {
+        animation: image-enter both linear;
+        animation-timeline: view();
+        animation-range: entry 5% cover 34%;
+      }
+
+      .route-line {
+        animation: line-grow both linear;
+        animation-timeline: view();
+        animation-range: entry 10% cover 82%;
+      }
+    }
+
+    @media (max-width: 800px) {
+      @supports (animation-timeline: view()) {
+        .route-line {
+          animation-name: line-grow-horizontal;
+        }
+      }
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      scroll-behavior: auto !important;
+      animation-duration: .001ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: .001ms !important;
+    }
+  }
+}
