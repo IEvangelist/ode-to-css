@@ -478,7 +478,10 @@
   }
 
   .landfall-crew {
-    grid-column: 3 / span 8;
+    grid-column: 2 / -2;
+  }
+
+  .landfall-crew > a {
     aspect-ratio: 16 / 10;
   }
 
@@ -663,7 +666,7 @@
       aspect-ratio: 4 / 3;
     }
 
-    .landfall-crew {
+    .landfall-crew > a {
       aspect-ratio: 4 / 3;
     }
   }

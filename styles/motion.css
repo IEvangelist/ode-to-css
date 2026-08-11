@@ -101,7 +101,7 @@
         animation-range: entry 5% cover 34%;
       }
 
-      .story-photo > a {
+      .story-photo > a > img {
         animation: image-enter both linear;
         animation-timeline: view();
         animation-range: entry 5% cover 34%;

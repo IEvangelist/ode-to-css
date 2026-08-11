@@ -78,7 +78,14 @@ test.describe('ode-to-css editorial tribute', () => {
       scripts: document.querySelectorAll('script').length,
       h1: document.querySelectorAll('h1').length,
       unlabeledLinks: [...document.querySelectorAll('a')].filter((link) => !link.textContent.trim() && !link.getAttribute('aria-label')).length,
-      skipTarget: Boolean(document.querySelector(document.querySelector('.skip-link')?.getAttribute('href') || ''))
+      skipTarget: Boolean(document.querySelector(document.querySelector('.skip-link')?.getAttribute('href') || '')),
+      syntaxTokens: document.querySelectorAll('code [class^="syntax-"]').length,
+      syntaxColors: new Set(
+        [...document.querySelectorAll('code [class^="syntax-"]')]
+          .map((token) => getComputedStyle(token).color)
+      ).size,
+      githubMarks: document.querySelectorAll('a[href="https://github.com/IEvangelist/ode-to-css"] .github-mark').length,
+      designCredits: document.querySelectorAll('a[href="https://davidpine.dev/"]').length
     }));
 
     expect(structure).toEqual({
@@ -91,7 +98,11 @@ test.describe('ode-to-css editorial tribute', () => {
       scripts: 0,
       h1: 1,
       unlabeledLinks: 0,
-      skipTarget: true
+      skipTarget: true,
+      syntaxTokens: 24,
+      syntaxColors: 6,
+      githubMarks: 1,
+      designCredits: 1
     });
 
     const viewportHeights = [720, 820, 920, 1020];
@@ -131,7 +142,9 @@ test.describe('ode-to-css editorial tribute', () => {
       remotePhotos: [...document.querySelectorAll('img')].filter((image) => image.src.startsWith('https://www.wiumlie.no/')).length,
       unlabeledImages: [...document.querySelectorAll('img')].filter((image) => !image.getAttribute('alt')).length,
       scripts: document.querySelectorAll('script').length,
-      skipTarget: Boolean(document.querySelector(document.querySelector('.skip-link')?.getAttribute('href') || ''))
+      skipTarget: Boolean(document.querySelector(document.querySelector('.skip-link')?.getAttribute('href') || '')),
+      githubMarks: document.querySelectorAll('a[href="https://github.com/IEvangelist/ode-to-css"] .github-mark').length,
+      designCredits: document.querySelectorAll('a[href="https://davidpine.dev/"]').length
     }));
 
     expect(story).toEqual({
@@ -144,10 +157,26 @@ test.describe('ode-to-css editorial tribute', () => {
       remotePhotos: 17,
       unlabeledImages: 0,
       scripts: 0,
-      skipTarget: true
+      skipTarget: true,
+      githubMarks: 1,
+      designCredits: 1
     });
 
     await scrollThrough(page);
+
+    const finalPhoto = page.locator('.landfall-crew');
+    const finalPhotoLink = finalPhoto.locator(':scope > a');
+    const finalPhotoCaption = finalPhoto.locator('figcaption');
+    await finalPhoto.scrollIntoViewIfNeeded();
+    const [figureBox, linkBox, captionBox] = await Promise.all([
+      finalPhoto.boundingBox(),
+      finalPhotoLink.boundingBox(),
+      finalPhotoCaption.boundingBox()
+    ]);
+    expect(figureBox.width).toBeGreaterThan(page.viewportSize().width * .6);
+    expect(linkBox.width).toBeGreaterThan(figureBox.width * .95);
+    expect(captionBox.y).toBeGreaterThanOrEqual(linkBox.y + linkBox.height - 1);
+
     await page.screenshot({ path: 'test-results/kontiki2-photo-essay.png', fullPage: true });
   });
 

@@ -39,7 +39,7 @@
     border-block-start: var(--rule);
   }
 
-  .site-footer > p {
+  .footer-signoff {
     grid-column: 1 / span 5;
   }
 
@@ -73,7 +73,7 @@
       display: none;
     }
 
-    .site-footer > p,
+    .footer-signoff,
     .site-footer nav {
       grid-column: 1 / -1;
     }

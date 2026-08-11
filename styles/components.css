@@ -37,6 +37,33 @@
     text-decoration: none;
   }
 
+  .footer-signoff {
+    display: grid;
+    gap: .2rem;
+  }
+
+  .footer-signoff p:last-child {
+    color: var(--ink-soft);
+    font-size: var(--step--1);
+  }
+
+  .footer-signoff a {
+    font-weight: 720;
+    text-decoration: underline;
+    text-underline-offset: .18em;
+  }
+
+  .repo-link {
+    gap: .5rem;
+  }
+
+  .github-mark {
+    flex: 0 0 auto;
+    inline-size: 1.25rem;
+    block-size: 1.25rem;
+    fill: currentColor;
+  }
+
   .action {
     display: inline-flex;
     align-items: center;
@@ -109,6 +136,7 @@
   .credited-photo > a {
     display: block;
     min-block-size: 2.75rem;
+    overflow: clip;
     color: inherit;
   }
 

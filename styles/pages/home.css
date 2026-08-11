@@ -137,6 +137,21 @@
     white-space: pre-wrap;
   }
 
+  .proposal-code .syntax-selector,
+  .proposal-code .syntax-property {
+    color: var(--accent);
+    font-weight: 720;
+  }
+
+  .proposal-code .syntax-value {
+    color: var(--ink);
+    font-weight: 620;
+  }
+
+  .proposal-code .syntax-punctuation {
+    color: var(--ink-soft);
+  }
+
   .cascade-section {
     padding-block: var(--space-6);
     color: var(--inverse-ink);
@@ -188,9 +203,23 @@
     color: var(--inverse-muted);
   }
 
-  .cascade-layer code,
   .layer-number {
     color: var(--accent-inverse);
+  }
+
+  .cascade-layer .syntax-property,
+  .cascade-layer .syntax-at-rule,
+  .cascade-layer .syntax-keyword {
+    color: var(--accent-inverse);
+    font-weight: 720;
+  }
+
+  .cascade-layer .syntax-value {
+    color: var(--inverse-ink);
+  }
+
+  .cascade-layer .syntax-punctuation {
+    color: var(--inverse-muted);
   }
 
   .history {
