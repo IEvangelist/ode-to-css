@@ -478,11 +478,16 @@
   }
 
   .landfall-crew {
-    grid-column: 2 / -2;
+    grid-column: 1 / -1;
   }
 
   .landfall-crew > a {
     aspect-ratio: 16 / 10;
+  }
+
+  .landfall-crew.shell > a,
+  .landfall-crew.shell > figcaption {
+    grid-column: 1 / -1;
   }
 
   .photo-credits {

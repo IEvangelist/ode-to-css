@@ -85,7 +85,10 @@ test.describe('ode-to-css editorial tribute', () => {
           .map((token) => getComputedStyle(token).color)
       ).size,
       githubMarks: document.querySelectorAll('a[href="https://github.com/IEvangelist/ode-to-css"] .github-mark').length,
-      designCredits: document.querySelectorAll('a[href="https://davidpine.dev/"]').length
+      designCredits: document.querySelectorAll('a[href="https://davidpine.dev/"]').length,
+      fingerprintedStyles: /^styles\.[a-f0-9]{10}\.css$/.test(
+        document.querySelector('link[rel="stylesheet"]')?.getAttribute('href') || ''
+      )
     }));
 
     expect(structure).toEqual({
@@ -100,9 +103,10 @@ test.describe('ode-to-css editorial tribute', () => {
       unlabeledLinks: 0,
       skipTarget: true,
       syntaxTokens: 24,
-      syntaxColors: 6,
+      syntaxColors: 8,
       githubMarks: 1,
-      designCredits: 1
+      designCredits: 1,
+      fingerprintedStyles: true
     });
 
     const viewportHeights = [720, 820, 920, 1020];
@@ -178,6 +182,39 @@ test.describe('ode-to-css editorial tribute', () => {
     expect(captionBox.y).toBeGreaterThanOrEqual(linkBox.y + linkBox.height - 1);
 
     await page.screenshot({ path: 'test-results/kontiki2-photo-essay.png', fullPage: true });
+  });
+
+  test('keeps cached voyage markup aligned with current CSS', async ({ page }) => {
+    await page.emulateMedia({ colorScheme: 'dark' });
+    await page.goto(kontikiPath);
+
+    const layout = await page.evaluate(() => {
+      const photo = document.querySelector('.landfall-crew');
+      const photoWrapper = photo.parentElement;
+      photo.classList.add('shell');
+      photoWrapper.replaceWith(photo);
+
+      const footer = document.querySelector('.site-footer');
+      const signoff = footer.querySelector('.footer-signoff');
+      const fallbackCopy = document.createElement('p');
+      fallbackCopy.textContent = 'A CSS-powered tribute to Håkon Wium Lie.';
+      signoff.replaceWith(fallbackCopy);
+
+      const figureBox = photo.getBoundingClientRect();
+      const linkBox = photo.querySelector(':scope > a').getBoundingClientRect();
+      const footerBox = footer.getBoundingClientRect();
+      const copyBox = fallbackCopy.getBoundingClientRect();
+
+      return {
+        photoRatio: linkBox.width / figureBox.width,
+        copyRatio: copyBox.width / footerBox.width,
+        horizontalOverflow: document.documentElement.scrollWidth - document.documentElement.clientWidth
+      };
+    });
+
+    expect(layout.photoRatio).toBeGreaterThan(.95);
+    expect(layout.copyRatio).toBeGreaterThan(.3);
+    expect(layout.horizontalOverflow).toBeLessThanOrEqual(1);
   });
 
   test('provides a complete reduced-motion experience', async ({ page }) => {

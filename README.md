@@ -18,7 +18,7 @@ Build and preview the site with:
 npm run preview
 ```
 
-The build combines the native CSS modules in `styles/`, copies the Recursive variable font, and emits the deployable `dist` directory.
+The build combines the native CSS modules in `styles/`, fingerprints the stylesheet to prevent stale HTML/CSS pairings, retains `styles.css` as a compatibility fallback, copies the Recursive variable font, and emits the deployable `dist` directory.
 
 ## Photography
 

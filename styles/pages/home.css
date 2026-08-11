@@ -128,28 +128,75 @@
   .proposal-code {
     grid-column: 10 / -1;
     align-self: end;
-    padding-block: var(--space-2);
-    border-block: var(--rule);
-    color: var(--ink-soft);
-    background: transparent;
-    font-size: var(--step--1);
-    line-height: 1.8;
-    white-space: pre-wrap;
+    min-inline-size: 0;
   }
 
-  .proposal-code .syntax-selector,
+  .proposal-code figcaption {
+    display: flex;
+    justify-content: space-between;
+    gap: var(--space-2);
+    padding-block: .8rem;
+    border-block-start: .3rem solid var(--accent);
+    border-block-end: var(--rule);
+    color: var(--ink-soft);
+    font-size: clamp(.68rem, .64rem + .18vw, .78rem);
+    font-variation-settings: "MONO" 1, "CASL" 0, "wght" 620, "slnt" 0, "CRSV" .5;
+  }
+
+  .proposal-code pre {
+    margin: 0;
+    padding-block: var(--space-2);
+    overflow-x: auto;
+    border-block-end: var(--rule);
+    font-size: var(--step--1);
+    line-height: 1.65;
+  }
+
+  .proposal-code code {
+    display: grid;
+    gap: .7rem;
+    min-inline-size: max-content;
+  }
+
+  .proposal-code .code-line {
+    display: grid;
+    grid-template-columns: 2ch auto;
+    gap: 1rem;
+  }
+
+  .proposal-code .code-line::before {
+    content: attr(data-line);
+    color: var(--line-strong);
+    font-size: .78em;
+    font-weight: 560;
+  }
+
+  .proposal-code .code-line-continuation .code-source {
+    padding-inline-start: 2ch;
+  }
+
+  .proposal-code .syntax-selector {
+    color: var(--syntax-selector);
+    font-weight: 760;
+  }
+
   .proposal-code .syntax-property {
-    color: var(--accent);
+    color: var(--syntax-property);
     font-weight: 720;
   }
 
   .proposal-code .syntax-value {
-    color: var(--ink);
-    font-weight: 620;
+    color: var(--syntax-value);
+    font-weight: 680;
+  }
+
+  .proposal-code .syntax-operator {
+    color: var(--syntax-operator);
+    font-weight: 760;
   }
 
   .proposal-code .syntax-punctuation {
-    color: var(--ink-soft);
+    color: var(--syntax-punctuation);
   }
 
   .cascade-section {

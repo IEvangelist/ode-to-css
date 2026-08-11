@@ -1,4 +1,5 @@
 const fs = require('fs');
+const crypto = require('crypto');
 const path = require('path');
 
 const root = process.cwd();
@@ -27,15 +28,21 @@ const fontSource = path.join(
 fs.rmSync(dist, { recursive: true, force: true });
 fs.mkdirSync(dist, { recursive: true });
 
-for (const file of htmlFiles) {
-  fs.copyFileSync(path.join(root, file), path.join(dist, file));
-}
-
 const styles = styleFiles
   .map((file) => `/* ${file} */\n${fs.readFileSync(path.join(root, file), 'utf8').trim()}`)
-  .join('\n\n');
+  .join('\n\n') + '\n';
+const styleHash = crypto.createHash('sha256').update(styles).digest('hex').slice(0, 10);
+const fingerprintedStylesheet = `styles.${styleHash}.css`;
 
-fs.writeFileSync(path.join(dist, 'styles.css'), `${styles}\n`);
+for (const file of htmlFiles) {
+  const html = fs
+    .readFileSync(path.join(root, file), 'utf8')
+    .replace('href="styles.css"', `href="${fingerprintedStylesheet}"`);
+  fs.writeFileSync(path.join(dist, file), html);
+}
+
+fs.writeFileSync(path.join(dist, fingerprintedStylesheet), styles);
+fs.writeFileSync(path.join(dist, 'styles.css'), styles);
 fs.mkdirSync(path.join(dist, 'fonts'), { recursive: true });
 fs.copyFileSync(fontSource, path.join(dist, 'fonts', 'recursive-latin-full-normal.woff2'));
 fs.cpSync(path.join(root, 'assets'), path.join(dist, 'assets'), { recursive: true });
